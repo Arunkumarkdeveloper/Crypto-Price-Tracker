@@ -1,0 +1,29 @@
+@media (max-width: 600px) {
+    .chart-duration-group {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 768px) {}
+
+@media (min-width: 600px) and (max-width: 768px) {}
+
+@media (min-width: 768px) and (max-width: 992px) {}
+
+@media (max-width: 992px) {}
+
+@media (min-width: 992px) and (max-width: 1200px) {}
+
+@media (max-width:1200px) {
+    .dropdown-content {
+        position: absolute;
+        left: 0px !important;
+    }
+
+    .view-coin-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(min-width:992px) {}

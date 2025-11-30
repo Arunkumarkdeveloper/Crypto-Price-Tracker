@@ -1,0 +1,268 @@
+.auth-container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 30px;
+    border-radius: 1px;
+    background-color: #fff;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2),
+        0 1px 1px 0 rgba(0, 0, 0, 0.01);
+    font-size: 13.5px;
+}
+
+.toggle {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.toggle-switch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 45px;
+    height: 25px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+
+    &:before,
+    &:after {
+        content: "";
+    }
+
+    &:before {
+        display: block;
+        background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+        border-radius: 50%;
+        /* box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25); */
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 5px;
+        left: 6px;
+        transition: left 0.25s;
+    }
+
+    .toggle:hover &:before {
+        background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .toggle-checkbox:checked+& {
+        background: #333;
+
+        &:before {
+            left: 25px;
+        }
+    }
+}
+
+.toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+}
+
+/* Table design */
+.table {
+    margin: 0 10%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    text-wrap: nowrap !important;
+    /* -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+}
+
+.coins-table-width {
+    width: 80%;
+}
+
+#coins {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#coins td,
+#coins th {
+    /* border: 1px solid #d9d9d9; */
+    padding: 10px;
+    padding-left: 25px;
+}
+
+#coins tr:nth-child(odd) {
+    background-color: #f6f6f6;
+    /* border-bottom: 1px solid #f4f4f4; */
+}
+
+#coins tr:nth-child(even) {
+    background-color: #fff;
+    /* border-bottom: 1px solid #f4f4f4; */
+}
+
+#coins tr:hover {
+    background-color: #e9e9e9;
+}
+
+.disable-table-hover:hover {
+    background-color: #F6F7FB !important;
+}
+
+#coins th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: start;
+    background-color: #46a758;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+}
+
+.pagination span {
+    cursor: pointer;
+    text-align: center;
+    background-color: aliceblue;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.pagination span:hover {
+    background-color: #034a6a;
+    padding: 10px 15px;
+    color: #fff;
+}
+
+/* PAGINATION */
+.active-pagination {
+    background: #46a758;
+    color: #fff !important;
+    padding: 2px 0px;
+    text-align: center;
+    align-items: center;
+}
+
+.active-pagination .react-paginate a {
+    color: #fff !important;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.react-paginate {
+    display: flex;
+    align-items: center;
+    column-gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.react-paginate li:hover {
+    background-color: #46a758;
+    color: #fff;
+    padding: 2px 0px;
+}
+
+.react-paginate a {
+    padding: 7px 11px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    /* color: #333; */
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.react-paginate .active a {
+    background-color: #007bff;
+    color: white;
+}
+
+.react-paginate .disabled a {
+    cursor: not-allowed;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .react-paginate {
+        justify-content: center;
+        flex-wrap: wrap;
+        column-gap: 0px !important;
+    }
+
+    .react-paginate a {
+        padding: 8px 10px;
+    }
+
+    .react-paginate li {
+        margin: 5px;
+    }
+
+    .pagination {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .react-paginate a {
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+
+    .pagination {
+        padding: 0 10px;
+    }
+}
+
+.chart-duration-group {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    column-gap: 15px;
+    margin-bottom: 10px;
+}
+
+.chart-duration-group span {
+    background-color: #fff;
+    padding: 5px 10px;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2),
+        0 1px 1px 0 rgba(0, 0, 0, 0.01);
+}
+
+.chart-duration-group span.active {
+    background-color: #e1e1e1;
+}
+
+.chart-duration-group span:hover {
+    cursor: pointer;
+    background-color: #e1e1e1;
+}
+
+.recharts-responsive-container:focus-visible {
+    outline: none !important;
+}
+
+.view-coin-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 90%;
+}
