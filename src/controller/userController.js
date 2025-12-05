@@ -1,5 +1,3 @@
-const bcrypt = require("bcrypt");
-import { SignJWT, jwtVerify } from "jose";
 const secretKey = new TextEncoder().encode(process.env.NEXTAUTH_SECRET);
 import { emailRegex, passwordRegex } from "@/lib/utils/validation";
 import { prisma } from "@/lib/config/prisma";
@@ -16,16 +14,6 @@ const createUser = async (request) => {
       return { status: 400, body: { message: "Invalid email format." } };
     }
 
-    if (!passwordRegex.test(password)) {
-      return {
-        status: 400,
-        body: {
-          message:
-            "Password must be at least 6 characters long, and include at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%*?&).",
-        },
-      };
-    }
-
     const userExist = await prisma.user.findUnique({
       where: { email },
       select: { id: true },
@@ -35,14 +23,11 @@ const createUser = async (request) => {
       return { status: 400, body: { message: "Email already exists" } };
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
     await prisma.user.create({
       data: {
         name,
         email,
-        password: hashedPassword,
+        password,
         provider: "credentials",
       },
     });

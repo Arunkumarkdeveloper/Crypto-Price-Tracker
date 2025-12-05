@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 import TwoFactorForm from "@/components/TwoFactorForm";
+import bcrypt from "bcryptjs";
 
 export default function Auth({ authType }) {
   const { data: session, status } = useSession();
@@ -60,7 +61,15 @@ export default function Auth({ authType }) {
     if (!validateForm()) return;
 
     try {
-      const response = await _post(`/api/auth/register`, user);
+      const saltRounds = 10;
+      const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+
+      const userPayload = {
+        name: user.name,
+        email: user.email,
+        password: hashedPassword,
+      };
+      const response = await _post(`/api/auth/register`, userPayload);
       toastMessage("success", response?.data?.message);
       router.push("/login");
     } catch (error) {
